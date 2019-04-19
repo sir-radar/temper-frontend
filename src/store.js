@@ -15,7 +15,7 @@ export default new Vuex.Store({
       // get first 5 posts
       state.posts.push(...posts.splice(0, postLength))
     },
-    move (state, { index, direction, title }) {
+    move (state, { index, direction, post }) {
       var old_index = index
       var new_index
       // decide direction
@@ -34,10 +34,10 @@ export default new Vuex.Store({
       // moves post to new position
       state.posts.splice(new_index, 0, state.posts.splice(old_index, 1)[0])
       // adds current move to history
-      state.history.unshift({ 'post': title, 'old_index': old_index, 'new_index': new_index })
+      state.history.unshift({'id':post.id, 'title': post.title.substring(0, 10), 'old_index': old_index, 'new_index': new_index })
     },
     restore (state, { old_index, new_index, history_index }) {
-      //e rror check
+      // error check
       if (old_index >= state.posts.length) {
         var k = old_index - state.posts.length + 1
         while (k--) {

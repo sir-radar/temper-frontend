@@ -1,21 +1,19 @@
 <template>
-<transition name="fade">
   <div class="d-flex justify-content-between align-items-center post">
     <h3 class="p-3">{{reducedTitleLength(post)}}{{more()}}</h3>
     <div class="d-flex flex-column justify-content-center chevron pr-3">
       <i
-        @click="move({index,direction:'up',title:reducedTitleLength(post)})"
+        @click="move({index,direction:'up',post})"
         v-if="index !== 0"
         class="fas fa-angle-up arrow"
       ></i>
       <i
-        @click="move({index,direction:'down',title:reducedTitleLength(post)})"
+        @click="move({index,direction:'down',post})"
         v-if="index !== (posts.length-1)"
         class="mt-3 fas fa-angle-down arrow"
       ></i>
     </div>
   </div>
-</transition>
 </template>
 
 <script>
@@ -57,10 +55,5 @@ export default {
   color: #6457B5;
   cursor: pointer;
 }
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
+
 </style>

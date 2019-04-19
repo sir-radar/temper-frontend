@@ -8,12 +8,14 @@
       <div class="posts_list">
         <h2>Sortable Post List</h2>
        <!-- post -->
+      
         <Post
           v-for="(post, index) in posts"
-          :key="index"
+          :key="post.id"
           :post="post"
           :index="index"
         />
+       
       </div>
       <div class="time_travel">
         <div class="time_travel_title p-3">
@@ -21,12 +23,14 @@
         </div>
         <div class="times p-3">
          <!-- time -->
+       
          <Time
           v-for="(item, index) in history"
-          :key="index"
+          :key="item+index"
           :index="index"
           :history_item="item"
          />
+        
         </div>
       </div>
     </div>
@@ -96,7 +100,6 @@ header {
   width: 45%;
   text-align: left;
   color: #FFF;
-  //  overflow: scroll;
 }
 
 .time_travel{
@@ -115,5 +118,4 @@ header {
   max-height: 300px;
   overflow-y: scroll;
 }
-
 </style>
