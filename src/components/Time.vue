@@ -2,7 +2,7 @@
   <div class="time d-flex justify-content-between align-items-center" :class="{top_border_radius: index === 0, 'bottom_border_radius': index === (history.length-1)}">
     <h6>Moved {{history_item.post}} from index {{history_item.old_index}} to index {{history_item.new_index}}</h6>
     <button
-      @click.prevent="restore({'old_index':history_item.old_index, 'new_index':history_item.new_index,'history_index':index, 'title':history_item.post})"
+      @click.prevent="restore({'old_index':history_item.old_index, 'new_index':history_item.new_index,'history_index':index })"
       class="time_btn"
       :disabled="index !== 0"
     >Time travel</button>
