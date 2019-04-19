@@ -1,4 +1,5 @@
 <template>
+<transition name="fade">
   <div class="d-flex justify-content-between align-items-center post">
     <h3 class="p-3">{{reducedTitleLength(post)}}{{more()}}</h3>
     <div class="d-flex flex-column justify-content-center chevron pr-3">
@@ -14,6 +15,7 @@
       ></i>
     </div>
   </div>
+</transition>
 </template>
 
 <script>
@@ -54,5 +56,11 @@ export default {
 .arrow{
   color: #6457B5;
   cursor: pointer;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

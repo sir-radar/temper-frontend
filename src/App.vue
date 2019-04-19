@@ -8,13 +8,12 @@
       <div class="posts_list">
         <h2>Sortable Post List</h2>
        <!-- post -->
-       <Post 
-        v-for="(post, index) in posts" 
-        :key="index" 
-        :post="post" 
-        :index="index"
-       />
-
+        <Post
+          v-for="(post, index) in posts"
+          :key="index"
+          :post="post"
+          :index="index"
+        />
       </div>
       <div class="time_travel">
         <div class="time_travel_title p-3">
@@ -22,38 +21,35 @@
         </div>
         <div class="times p-3">
          <!-- time -->
-         <Time 
-          v-for="(item, index) in history" 
-          :key="index" 
-          :index="index" 
+         <Time
+          v-for="(item, index) in history"
+          :key="index"
+          :index="index"
           :history_item="item"
          />
         </div>
-
       </div>
     </div>
-    
   </div>
 </template>
 
 <script>
-import {mapState, mapActions} from 'vuex';
-import Post from '@/components/Post';
-import Time from '@/components/Time';
+import { mapState, mapActions } from 'vuex'
+import Post from '@/components/Post'
+import Time from '@/components/Time'
 export default {
   name: 'app',
   components: {
-   Post,
-   Time
+    Post, Time
   },
-  async mounted(){
+  async mounted () {
     await this.getPosts()
   },
-  methods:{
-    ...mapActions(['getPosts']),
+  methods: {
+    ...mapActions(['getPosts'])
   },
-  computed:{
-    ...mapState(['posts','history'])
+  computed: {
+    ...mapState(['posts', 'history'])
   }
 }
 </script>
@@ -92,7 +88,7 @@ header {
   height: 500px;
   width: 80%;
   left: 10%;
-  top: 5%;
+  top: 7%;
   z-index: 100;
 
 }
