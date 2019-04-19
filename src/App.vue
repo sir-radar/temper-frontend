@@ -8,7 +8,12 @@
       <div class="posts_list">
         <h2>Sortable Post List</h2>
        <!-- post -->
-       <Post v-for="(post, index) in posts" :key="index" :post="post" :index="index"/>
+       <Post 
+        v-for="(post, index) in posts" 
+        :key="index" 
+        :post="post" 
+        :index="index"
+       />
 
       </div>
       <div class="time_travel">
@@ -17,7 +22,12 @@
         </div>
         <div class="times p-3">
          <!-- time -->
-         <Time/>
+         <Time 
+          v-for="(item, index) in history" 
+          :key="index" 
+          :index="index" 
+          :history_item="item"
+         />
         </div>
 
       </div>
@@ -27,7 +37,7 @@
 </template>
 
 <script>
-import {mapState, mapActions, mapMutations, mapGetters} from 'vuex';
+import {mapState, mapActions} from 'vuex';
 import Post from '@/components/Post';
 import Time from '@/components/Time';
 export default {
@@ -43,7 +53,7 @@ export default {
     ...mapActions(['getPosts']),
   },
   computed:{
-    ...mapState(['posts'])
+    ...mapState(['posts','history'])
   }
 }
 </script>
@@ -103,8 +113,11 @@ header {
 }
 .time_travel_title{
   background: white;
-  
   border-radius: 4px 4px 0px 4px;
+}
+.times{
+  max-height: 300px;
+  overflow-y: scroll;
 }
 
 </style>

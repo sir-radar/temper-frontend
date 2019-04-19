@@ -1,28 +1,39 @@
 <template>
   <div class="d-flex justify-content-between align-items-center post">
-    <h3 class="p-3">{{post.title.substring(0, 20)}}{{more()}}</h3>
+    <h3 class="p-3">{{reducedTitleLength(post)}}{{more()}}</h3>
     <div class="d-flex flex-column justify-content-center chevron pr-3">
-      <i @click="up(index)" v-if="index !== 0" class="fas fa-angle-up arrow"></i>
-      <i @click="down(index)" v-if="index !== (posts.length-1)" class="mt-3 fas fa-angle-down arrow"></i>
+      <i
+        @click="move({index,direction:'up',title:reducedTitleLength(post)})"
+        v-if="index !== 0"
+        class="fas fa-angle-up arrow"
+      ></i>
+      <i
+        @click="move({index,direction:'down',title:reducedTitleLength(post)})"
+        v-if="index !== (posts.length-1)"
+        class="mt-3 fas fa-angle-down arrow"
+      ></i>
     </div>
   </div>
 </template>
 
 <script>
-import {mapState, mapActions, mapMutations, mapGetters} from 'vuex';
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: 'HelloWorld',
+  name: 'Post',
   props: {
     post: Object,
     index: Number
   },
-  methods:{
-    ...mapMutations(['up','down']),
-    more(){
-      return this.post.title.length > 20 ? '...': ''
+  methods: {
+    ...mapMutations(['move']),
+    more () {
+      return this.post.title.length > 10 ? '...' : ''
+    },
+    reducedTitleLength (post) {
+      return post.title.substring(0, 10)
     }
   },
-  computed:{
+  computed: {
     ...mapState(['posts'])
   }
 }
