@@ -74,7 +74,6 @@ header {
   height: 230px;
   overflow: hidden;
 }
-
 .header_bg {
   position: absolute;
   top: 0;
@@ -101,7 +100,6 @@ header {
   text-align: left;
   color: #FFF;
 }
-
 .time_travel{
   width: 45%;
   text-align: left;
@@ -118,14 +116,10 @@ header {
   max-height: 300px;
   overflow-y: scroll;
 }
-
-// new code
 .time {
   transition: all 0.5s;
-
 }
-.time-enter, .time-leave-to
-/* .card-leave-active for <2.1.8 */ {
+.time-enter, .time-leave-to{
   opacity: 0;
   transform: scale(0);
 }
@@ -137,5 +131,4 @@ header {
   opacity: 1;
   transition: all 0.5s;
 }
-
 </style>
