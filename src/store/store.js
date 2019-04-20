@@ -34,7 +34,7 @@ export default new Vuex.Store({
       // moves post to new position
       state.posts.splice(new_index, 0, state.posts.splice(old_index, 1)[0])
       //generate unique id for each history
-      var id = post.id * state.history.length
+      const id = post.id * state.history.length
       // adds current move to history
       state.history.unshift({'id':id, 'title': post.title.substring(0, 10), 'old_index': old_index, 'new_index': new_index })
     },
