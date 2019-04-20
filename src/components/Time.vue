@@ -4,9 +4,8 @@
     :class="{top_border_radius: index === 0, 'bottom_border_radius': index === (history.length-1)}">
     <h6>Moved {{history_item.title}} from index {{history_item.old_index}} to index {{history_item.new_index}}</h6>
     <button
-      @click.prevent="restore({'old_index':history_item.old_index, 'new_index':history_item.new_index,'history_index':index })"
+      @click.prevent="restore({'old_index':history_item.old_index,'history_index':index })"
       class="time_btn"
-      :disabled="index !== 0"
     >Time travel</button>
     <!-- Time travel should be in order of action commited not reversed that 
         is why only the first button is active at all times-->
