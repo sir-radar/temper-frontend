@@ -7,8 +7,6 @@
       @click.prevent="restore({'old_index':history_item.old_index,'history_index':index })"
       class="time_btn"
     >Time travel</button>
-    <!-- Time travel should be in order of action commited not reversed that 
-        is why only the first button is active at all times-->
   </div>
 </template>
 <script>
