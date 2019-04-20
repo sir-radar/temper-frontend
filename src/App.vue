@@ -8,14 +8,13 @@
       <div class="posts_list">
         <h2>Sortable Post List</h2>
        <!-- post -->
-      
         <Post
           v-for="(post, index) in posts"
           :key="post.id"
           :post="post"
           :index="index"
         />
-       
+
       </div>
       <div class="time_travel">
         <div class="time_travel_title p-3">
@@ -23,14 +22,15 @@
         </div>
         <div class="times p-3">
          <!-- time -->
-       
+        <transition-group  name="time" tag="div">
          <Time
           v-for="(item, index) in history"
-          :key="item+index"
+          :key="item.id"
           :index="index"
           :history_item="item"
+          class="time"
          />
-        
+        </transition-group>
         </div>
       </div>
     </div>
@@ -118,4 +118,24 @@ header {
   max-height: 300px;
   overflow-y: scroll;
 }
+
+// new code
+.time {
+  transition: all 0.5s;
+
+}
+.time-enter, .time-leave-to
+/* .card-leave-active for <2.1.8 */ {
+  opacity: 0;
+  transform: scale(0);
+}
+.time-enter-to {
+  opacity: 1;
+  transform: scale(1);
+}
+.time-move {
+  opacity: 1;
+  transition: all 0.5s;
+}
+
 </style>
