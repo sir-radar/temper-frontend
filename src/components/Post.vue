@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-between align-items-center post">
-    <h3 class="p-3">{{reducedTitleLength(post)}}{{more()}}</h3>
+    <h3 class="p-3">{{reducedTitleLength()}}{{more()}}</h3>
     <div class="d-flex flex-column justify-content-center chevron pr-3">
       <i
         @click="move({index,direction:'up',post})"
@@ -29,8 +29,8 @@ export default {
     more () {
       return this.post.title.length > 10 ? '...' : ''
     },
-    reducedTitleLength (post) {
-      return post.title.substring(0, 10)
+    reducedTitleLength () {
+      return this.post.title.substring(0, 10)
     }
   },
   computed: {
