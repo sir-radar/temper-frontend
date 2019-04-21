@@ -16,6 +16,7 @@
           :index="index"
         />
       </transition-group>
+      <div class="error" v-if="posts.length < 1">Error : Unable to fetch posts</div>
       </div>
       <div class="time_travel">
         <div class="time_travel_title p-3">
@@ -131,5 +132,9 @@ header {
 .time-move, .post-move {
   opacity: 1;
   transition: all 0.5s;
+}
+.error{
+  color: red;
+  text-align: left;
 }
 </style>

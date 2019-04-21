@@ -50,6 +50,9 @@ export default new Vuex.Store({
         .then(({ data }) => {
           commit('setPosts', data)
         })
+        .catch(error=>{
+          
+        })
     }
   }
 })

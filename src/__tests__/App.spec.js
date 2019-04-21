@@ -14,13 +14,15 @@ describe('App Component', () => {
     actions = {
       getPosts: jest.fn()
     }
-    store = new Vuex.Store({
-      actions
-    })
     state = {
-      history: [],
-      posts:[]
+      posts:[],
+      history: []
     }
+    store = new Vuex.Store({
+      actions,
+      state
+    })
+    
   })
   it('should get all posts', () => {
     const wrapper = mount(App, {
