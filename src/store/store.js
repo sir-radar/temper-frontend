@@ -11,6 +11,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setPosts (state, posts) {
+      // console.log(posts)
       let postLength = 5
       // get first 5 posts
       state.posts.push(...posts.splice(0, postLength))

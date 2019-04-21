@@ -2,19 +2,21 @@ import { createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 import VueStore from '@/store/store'
 
+let posts = [
+  {id: 1, title:"post 1"},
+  {id: 2, title:"post 2"},
+  {id: 3, title:"post 3"},
+  {id: 4, title:"post 4"},
+  {id: 5, title:"post 5"},
+  {id: 6, title:"post 6"},
+  {id: 7, title:"post 7"}
+]
+
 test('updates "posts" when "setPosts" is commited', () => {
   const localVue = createLocalVue()
   localVue.use(Vuex)
   expect(VueStore.state.posts.length).toBe(0)
-  VueStore.commit('setPosts',[
-    {id: 1, title:"post 1"},
-    {id: 2, title:"post 2"},
-    {id: 3, title:"post 3"},
-    {id: 4, title:"post 4"},
-    {id: 5, title:"post 5"},
-    {id: 6, title:"post 6"},
-    {id: 7, title:"post 7"}
-  ])
+  VueStore.commit('setPosts', posts)
   expect(VueStore.state.posts.length).toBe(5)
 })
 
@@ -34,9 +36,11 @@ test('test "posts" keeps length when "restore" is commited', () => {
   expect(VueStore.state.posts.length).toBe(5)
 })
 
-test('test that getPosts action commits setPosts', () => {
+test('test that getPosts action commits setPosts', async () => {
+  const commit = jest.fn()
   const localVue = createLocalVue()
   localVue.use(Vuex)
-  VueStore.dispatch('getPosts')
+  VueStore.state.posts = []
+  await VueStore.dispatch('getPosts',{commit})
   expect(VueStore.state.posts.length).toBe(5)
 })
