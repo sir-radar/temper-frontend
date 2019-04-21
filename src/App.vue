@@ -8,13 +8,14 @@
       <div class="posts_list">
         <h2>Sortable Post List</h2>
        <!-- post -->
+       <transition-group  name="post" tag="div">
         <Post
           v-for="(post, index) in posts"
           :key="post.id"
           :post="post"
           :index="index"
         />
-
+      </transition-group>
       </div>
       <div class="time_travel">
         <div class="time_travel_title p-3">
@@ -116,18 +117,18 @@ header {
   max-height: 300px;
   overflow-y: scroll;
 }
-.time {
+.time, .post {
   transition: all 0.5s;
 }
-.time-enter, .time-leave-to{
+.time-enter, .time-leave-to ,.post-enter, .post-leave-to{
   opacity: 0;
   transform: scale(0);
 }
-.time-enter-to {
+.time-enter-to, .post-enter-to {
   opacity: 1;
   transform: scale(1);
 }
-.time-move {
+.time-move, .post-move {
   opacity: 1;
   transition: all 0.5s;
 }
