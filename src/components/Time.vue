@@ -6,7 +6,9 @@
     <button
       @click.prevent="restore({'old_index':history_item.old_index,'history_index':index })"
       class="time_btn"
-    >Time travel</button>
+    >
+    Time travel
+    </button>
   </div>
 </template>
 <script>
