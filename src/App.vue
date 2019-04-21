@@ -16,7 +16,7 @@
           :index="index"
         />
       </transition-group>
-      <div class="error" v-if="posts.length < 1">Error : Unable to fetch posts</div>
+      <div class="error" v-text="error"></div>
       </div>
       <div class="time_travel">
         <div class="time_travel_title p-3">
@@ -55,7 +55,7 @@ export default {
     ...mapActions(['getPosts'])
   },
   computed: {
-    ...mapState(['posts', 'history'])
+    ...mapState(['posts', 'history', 'error'])
   }
 }
 </script>

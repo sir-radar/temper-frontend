@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     posts: [],
-    history: []
+    history: [],
+    error: ""
   },
   mutations: {
     setPosts (state, posts) {
@@ -45,13 +46,13 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async getPosts ({ commit }) {
+    async getPosts ({ commit,state }) {
       await axios.get('https://jsonplaceholder.typicode.com/posts')
         .then(({ data }) => {
           commit('setPosts', data)
         })
         .catch(error=>{
-          
+          state.error = "Error : Unable to fetch posts";
         })
     }
   }

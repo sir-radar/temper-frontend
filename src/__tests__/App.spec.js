@@ -14,13 +14,8 @@ describe('App Component', () => {
     actions = {
       getPosts: jest.fn()
     }
-    state = {
-      posts:[],
-      history: []
-    }
     store = new Vuex.Store({
-      actions,
-      state
+      actions
     })
     
   })
